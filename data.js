@@ -118,7 +118,7 @@ const gameData = [
         character: goodmen.villager,
       },
       {
-        name: players.liuruoran,
+        name: players.liaoguolong,
         character: goodmen.villager,
       },
       {
