@@ -1,21 +1,26 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Open sans', 'STHeitiSC-Light', Arial, sans-serif;
   margin: 0;
+  padding: 10px;
 }
 
 ul {
   padding: 0;
 }
 
-ol, li {
+ol,
+li {
   list-style: none;
 }
 
-.container, .league {
+.container,
+.league {
   width: 100%;
   max-width: 600px;
 }
@@ -78,4 +83,40 @@ ol, li {
 
 .person__score {
   width: 20%;
+}
+
+.details {
+  margin: 0;
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.details:nth-child(even) {
+  background: #eee;
+}
+
+.details--header {
+  font-weight: bold;
+}
+
+.details_player {
+  width: 15%;
+}
+
+.details_character {
+  width: 30%;
+}
+
+.details_result {
+  width: 30%;
+}
+
+.details_win .details_result {
+  color: green;
+}
+
+.details_loss .details_result {
+  color: red;
 }
