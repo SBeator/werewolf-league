@@ -217,7 +217,7 @@ const gameData = [
       },
       {
         name: players.zhipu,
-        character: goodmen.villager,
+        character: goodmen.witcher,
       },
       {
         name: players.duyadi,
