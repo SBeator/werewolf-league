@@ -1,241 +1,4 @@
 (function() {
-  const players = {
-    yangyi: '杨倚',
-    duyadi: '杜雅迪',
-    sundi: '孙迪',
-    sunjiaxun: '孙嘉逊',
-    zengxingxin: '曾星鑫',
-    liuruoran: '刘若然',
-    liushan: '刘珊',
-    linchen: '林晨',
-    duweike: '杜维克',
-    xiaozihang: '夏梓航',
-    yuyang: '喻杨',
-    zenglei: '曾磊',
-    liucong: '刘聪',
-    wangpei: '王培',
-    hewei: '何蔚',
-    zhipu: '支朴',
-  };
-
-  const wolves = {
-    normal: '普狼',
-    gun: '狼枪',
-    devil: '恶魔',
-  };
-
-  const goodmen = {
-    villager: '村民',
-    seer: '预言家',
-    hunter: '猎人',
-    witcher: '女巫',
-    guard: '守卫',
-    cupid: '丘比特',
-  };
-
-  const thirdSide = {};
-
-  const roleSides = { wolves, goodmen, thirdSide };
-
-  const gameData = [
-    {
-      date: '2 Feb',
-      round: '1',
-      winSide: 'wolves',
-      players: [
-        {
-          name: players.yangyi,
-          character: wolves.normal,
-        },
-        {
-          name: players.duyadi,
-          character: wolves.gun,
-        },
-        {
-          name: players.sundi,
-          character: wolves.normal,
-        },
-        {
-          name: players.sunjiaxun,
-          character: wolves.normal,
-        },
-        {
-          name: players.zengxingxin,
-          character: goodmen.villager,
-        },
-        {
-          name: players.liuruoran,
-          character: goodmen.villager,
-        },
-        {
-          name: players.liushan,
-          character: goodmen.villager,
-        },
-        {
-          name: players.linchen,
-          character: goodmen.witcher,
-        },
-        {
-          name: players.duweike,
-          character: goodmen.villager,
-        },
-        {
-          name: players.zenglei,
-          character: goodmen.villager,
-        },
-        {
-          name: players.liucong,
-          character: goodmen.cupid,
-        },
-        {
-          name: players.xiaozihang,
-          character: goodmen.guard,
-        },
-        {
-          name: players.yuyang,
-          character: goodmen.hunter,
-        },
-      ],
-    },
-    {
-      date: '2 Feb',
-      round: '2',
-      winSide: 'goodmen',
-      players: [
-        {
-          name: players.zengxingxin,
-          character: goodmen.seer,
-        },
-        {
-          name: players.liuruoran,
-          character: goodmen.villager,
-        },
-        {
-          name: players.liushan,
-          character: goodmen.witcher,
-        },
-        {
-          name: players.linchen,
-          character: goodmen.villager,
-        },
-        {
-          name: players.duweike,
-          character: goodmen.hunter,
-        },
-        {
-          name: players.sundi,
-          character: goodmen.villager,
-        },
-        {
-          name: players.wangpei,
-          character: wolves.normal,
-        },
-        {
-          name: players.hewei,
-          character: wolves.normal,
-        },
-        {
-          name: players.yangyi,
-          character: wolves.normal,
-        },
-      ],
-    },
-    {
-      date: '9 Feb',
-      round: '1',
-      winSide: 'wolves',
-      players: [
-        {
-          name: players.xiaozihang,
-          character: wolves.normal,
-        },
-        {
-          name: players.zenglei,
-          character: wolves.normal,
-        },
-        {
-          name: players.sundi,
-          character: wolves.normal,
-        },
-        {
-          name: players.yuyang,
-          character: wolves.devil,
-        },
-        {
-          name: players.yangyi,
-          character: goodmen.seer,
-        },
-        {
-          name: players.liushan,
-          character: goodmen.guard,
-        },
-        {
-          name: players.liuruoran,
-          character: goodmen.hunter,
-        },
-        {
-          name: players.duweike,
-          character: goodmen.villager,
-        },
-        {
-          name: players.zenglei,
-          character: goodmen.villager,
-        },
-        {
-          name: players.zhipu,
-          character: goodmen.villager,
-        },
-        {
-          name: players.duyadi,
-          character: goodmen.villager,
-        },
-        {
-          name: players.linchen,
-          character: goodmen.villager,
-        },
-      ],
-    },
-    {
-      date: '9 Feb',
-      round: '2',
-      winSide: 'goodmen',
-      players: [
-        {
-          name: players.zengxingxin,
-          character: goodmen.seer,
-        },
-        {
-          name: players.liushan,
-          character: goodmen.hunter,
-        },
-        {
-          name: players.linchen,
-          character: goodmen.witcher,
-        },
-        {
-          name: players.liuruoran,
-          character: goodmen.villager,
-        },
-        {
-          name: players.duweike,
-          character: goodmen.villager,
-        },
-        {
-          name: players.zenglei,
-          character: goodmen.villager,
-        },
-        {
-          name: players.sundi,
-          character: wolves.normal,
-        },
-        {
-          name: players.yangyi,
-          character: wolves.normal,
-        },
-      ],
-    },
-  ];
-
   let scoreList = [];
 
   let count = 0;
@@ -284,6 +47,23 @@
     return scoreList.find(player => player.name == playerName);
   }
 
+  function getCharacterIndex(character) {
+    let characterIndex = -1;
+    let characterSide = -1;
+    for (let [side, roles] of Object.entries(roleSides)) {
+      characterIndex = Object.values(roles).indexOf(character);
+      if (characterIndex >= 0) {
+        characterSide = Object.keys(roleSides).indexOf(side);
+        break;
+      }
+    }
+
+    return {
+      side: characterSide,
+      index: characterIndex,
+    };
+  }
+
   function buildScoreBoard() {
     return scoreList
       .sort((a, b) => b.score - a.score)
@@ -297,10 +77,15 @@
 
   function buildOneGameResultBoard(game) {
     const winSide = game.winSide;
-    let playerInfos = [...game.players].sort((a, b) => {
-      return (
-        isPlayerWin(b.character, winSide) - isPlayerWin(a.character, winSide)
-      );
+    let playerInfos = game.players.sort((a, b) => {
+      const aCharaterInfo = getCharacterIndex(a.character);
+      const bCharaterInfo = getCharacterIndex(b.character);
+
+      let compare = aCharaterInfo.side - bCharaterInfo.side;
+      if (compare === 0) {
+        compare = aCharaterInfo.index - bCharaterInfo.index;
+      }
+      return compare;
     });
 
     playerInfos = playerInfos
