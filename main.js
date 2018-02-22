@@ -9,6 +9,13 @@
     liushan: '刘珊',
     linchen: '林晨',
     duweike: '杜维克',
+    xiaozihang: '夏梓航',
+    yuyang: '喻杨',
+    zenglei: '曾磊',
+    liucong: '刘聪',
+    wangpei: '王培',
+    hewei: '何蔚',
+    zhipu: '支朴',
   };
 
   const wolves = {
@@ -32,47 +39,61 @@
 
   const gameData = [
     {
-      date: '3 Feb',
+      date: '2 Feb',
       round: '1',
       winSide: 'wolves',
       players: [
         {
           name: players.yangyi,
-          character: goodmen.seer,
+          character: wolves.normal,
         },
         {
           name: players.duyadi,
+          character: wolves.gun,
+        },
+        {
+          name: players.sundi,
           character: wolves.normal,
         },
-      ],
-    },
-    {
-      date: '2 Feb',
-      round: '3',
-      winSide: 'goodmen',
-      players: [
+        {
+          name: players.sunjiaxun,
+          character: wolves.normal,
+        },
+        {
+          name: players.zengxingxin,
+          character: goodmen.villager,
+        },
         {
           name: players.liuruoran,
-          character: goodmen.seer,
+          character: goodmen.villager,
         },
         {
-          name: players.duyadi,
-          character: wolves.normal,
-        },
-      ],
-    },
-    {
-      date: '2 Feb',
-      round: '1',
-      winSide: 'wolves',
-      players: [
-        {
-          name: players.yangyi,
-          character: goodmen.seer,
+          name: players.liushan,
+          character: goodmen.villager,
         },
         {
-          name: players.duyadi,
-          character: wolves.normal,
+          name: players.linchen,
+          character: goodmen.witcher,
+        },
+        {
+          name: players.duweike,
+          character: goodmen.villager,
+        },
+        {
+          name: players.zenglei,
+          character: goodmen.villager,
+        },
+        {
+          name: players.liucong,
+          character: goodmen.cupid,
+        },
+        {
+          name: players.xiaozihang,
+          character: goodmen.guard,
+        },
+        {
+          name: players.yuyang,
+          character: goodmen.hunter,
         },
       ],
     },
@@ -82,11 +103,133 @@
       winSide: 'goodmen',
       players: [
         {
-          name: players.liuruoran,
+          name: players.zengxingxin,
           character: goodmen.seer,
         },
         {
+          name: players.liuruoran,
+          character: goodmen.villager,
+        },
+        {
+          name: players.liushan,
+          character: goodmen.witcher,
+        },
+        {
+          name: players.linchen,
+          character: goodmen.villager,
+        },
+        {
+          name: players.duweike,
+          character: goodmen.hunter,
+        },
+        {
+          name: players.sundi,
+          character: goodmen.villager,
+        },
+        {
+          name: players.wangpei,
+          character: wolves.normal,
+        },
+        {
+          name: players.hewei,
+          character: wolves.normal,
+        },
+        {
+          name: players.yangyi,
+          character: wolves.normal,
+        },
+      ],
+    },
+    {
+      date: '9 Feb',
+      round: '1',
+      winSide: 'wolves',
+      players: [
+        {
+          name: players.xiaozihang,
+          character: wolves.normal,
+        },
+        {
+          name: players.zenglei,
+          character: wolves.normal,
+        },
+        {
+          name: players.sundi,
+          character: wolves.normal,
+        },
+        {
+          name: players.yuyang,
+          character: wolves.devil,
+        },
+        {
+          name: players.yangyi,
+          character: goodmen.seer,
+        },
+        {
+          name: players.liushan,
+          character: goodmen.guard,
+        },
+        {
+          name: players.liuruoran,
+          character: goodmen.hunter,
+        },
+        {
+          name: players.duweike,
+          character: goodmen.villager,
+        },
+        {
+          name: players.zenglei,
+          character: goodmen.villager,
+        },
+        {
+          name: players.zhipu,
+          character: goodmen.villager,
+        },
+        {
           name: players.duyadi,
+          character: goodmen.villager,
+        },
+        {
+          name: players.linchen,
+          character: goodmen.villager,
+        },
+      ],
+    },
+    {
+      date: '9 Feb',
+      round: '2',
+      winSide: 'goodmen',
+      players: [
+        {
+          name: players.zengxingxin,
+          character: goodmen.seer,
+        },
+        {
+          name: players.liushan,
+          character: goodmen.hunter,
+        },
+        {
+          name: players.linchen,
+          character: goodmen.witcher,
+        },
+        {
+          name: players.liuruoran,
+          character: goodmen.villager,
+        },
+        {
+          name: players.duweike,
+          character: goodmen.villager,
+        },
+        {
+          name: players.zenglei,
+          character: goodmen.villager,
+        },
+        {
+          name: players.sundi,
+          character: wolves.normal,
+        },
+        {
+          name: players.yangyi,
           character: wolves.normal,
         },
       ],
@@ -97,17 +240,21 @@
 
   buildScoreList();
   $('.score-board').after(buildScoreBoard());
+  buildGameResultDetailsBoard();
+  buidlLastUpdateTime();
 
-  const detailsBoard = gameData
-    .sort(
-      (a, b) =>
-        new Date(a.date) < new Date(b.date)
-          ? true
-          : new Date(a.date) > new Date(b.date) ? false : a.round > b.round
-    )
-    .map(game => buildOneGameResultBoard(game))
-    .join('');
-  $('.game-details').after(detailsBoard);
+  function buildGameResultDetailsBoard() {
+    const detailsBoard = gameData
+      .sort(
+        (a, b) =>
+          new Date(a.date) < new Date(b.date)
+            ? true
+            : new Date(a.date) > new Date(b.date) ? false : a.round > b.round
+      )
+      .map(game => buildOneGameResultBoard(game))
+      .join('');
+    $('.game-details').after(detailsBoard);
+  }
 
   function buildScoreList() {
     gameData.forEach(game => {
@@ -138,7 +285,7 @@
 
   function buildScoreBoard() {
     return scoreList
-      .sort((a, b) => a.score < b.score)
+      .sort((a, b) => b.score - a.score)
       .map(
         ({ name, score }, idx) =>
           `<li class='person'><span class='person__rank'>${idx +
@@ -149,8 +296,13 @@
 
   function buildOneGameResultBoard(game) {
     const winSide = game.winSide;
-    let playerInfos = game.players
-      .sort((a, b) => !isPlayerWin(a.character, winSide))
+    let playerInfos = [...game.players].sort((a, b) => {
+      return (
+        isPlayerWin(b.character, winSide) - isPlayerWin(a.character, winSide)
+      );
+    });
+
+    playerInfos = playerInfos
       .map(player => {
         const win = isPlayerWin(player.character, winSide);
 
@@ -165,7 +317,7 @@
     const date = new Date(game.date);
 
     return `
-    <div>${date.getMonth + 1}月￥{}</div>
+    <div>${date.getMonth() + 1}月${date.getDate()}日</div>
     <div>Round ${game.round}</div>
     <ul>
       <li class="details details--header">
@@ -174,6 +326,22 @@
         <span class="details_result">Win/Loss</span>
       </li>
       ${playerInfos}
-    </ul>`;
+    </ul>
+    <hr />
+    `;
+  }
+
+  function buidlLastUpdateTime() {
+    const maxDate = gameData
+      .map(game => new Date(game.date))
+      .reduce(
+        (lastData, currectDate) =>
+          lastData > currectDate ? lastData : currectDate,
+        0
+      );
+
+    $('.league__info').text(
+      `最后更新： ${maxDate.getMonth() + 1}月${maxDate.getDate()}日`
+    );
   }
 })();
