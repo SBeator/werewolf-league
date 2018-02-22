@@ -238,6 +238,7 @@
 
   let scoreList = [];
 
+  let count = 0;
   buildScoreList();
   $('.score-board').after(buildScoreBoard());
   buildGameResultDetailsBoard();
@@ -317,6 +318,7 @@
     const date = new Date(game.date);
 
     return `
+    <div>#${++count}</div>
     <div>${date.getMonth() + 1}月${date.getDate()}日</div>
     <div>Round ${game.round}</div>
     <ul>
