@@ -6,18 +6,19 @@
   $('.score-board').after(buildScoreBoard());
   buildGameResultDetailsBoard();
   buidlLastUpdateTime();
+  handleDetailsToggleEvent();
 
   function buildGameResultDetailsBoard() {
     const detailsBoard = gameData
       .sort(
         (a, b) =>
-          new Date(a.date) < new Date(b.date)
+          new Date(a.date) > new Date(b.date)
             ? true
-            : new Date(a.date) > new Date(b.date) ? false : a.round > b.round
+            : new Date(a.date) < new Date(b.date) ? false : a.round > b.round
       )
       .map(game => buildOneGameResultBoard(game))
       .join('');
-    $('.game-details').after(detailsBoard);
+    $('.game-details').append(detailsBoard);
   }
 
   function buildScoreList() {
@@ -103,19 +104,42 @@
     const date = new Date(game.date);
 
     return `
-    <div>#${++count}</div>
-    <div>${date.getMonth() + 1}月${date.getDate()}日</div>
-    <div>Round ${game.round}</div>
-    <ul>
-      <li class="details details--header">
-        <span class="details_player">Player</span>
-        <span class="details_character">Character</span>
-        <span class="details_result">Win/Loss</span>
-      </li>
-      ${playerInfos}
-    </ul>
+    <div class="single-game-details">
+      <div class="single-game-details-title">#${++count}# ${date.getMonth() +
+      1}月${date.getDate()}日, Round ${game.round}, 获胜方：<span class="win_${
+      game.winSide
+    }">${getWinText(game.winSide)}</span></div>
+      <ul style="display:none">
+        <li class="details details--header">
+          <span class="details_player">Player</span>
+          <span class="details_character">Character</span>
+          <span class="details_result">Win/Loss</span>
+        </li>
+        ${playerInfos}
+      </ul>
+    </div>
     <hr />
     `;
+  }
+
+  function handleDetailsToggleEvent() {
+    $('.game-details').on('click', '.single-game-details-title', function() {
+      const $this = $(this);
+      $this
+        .parents('.single-game-details')
+        .find('ul')
+        .slideToggle();
+    });
+  }
+
+  function getWinText(winSide) {
+    const winText = {
+      goodmen: '神民',
+      wolves: '狼人',
+      thirdSide: '第三方',
+    };
+
+    return winText[winSide];
   }
 
   function buidlLastUpdateTime() {

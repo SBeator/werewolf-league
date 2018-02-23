@@ -120,3 +120,19 @@ li {
 .details_loss .details_result {
   color: red;
 }
+
+.single-game-details-title {
+  cursor: pointer;
+}
+
+.win_goodmen {
+  color: green;
+}
+
+.win_wolves {
+  color: red;
+}
+
+.win_thirdSide {
+  color: yellow;
+}
