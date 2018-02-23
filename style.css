@@ -136,3 +136,13 @@ li {
 .win_thirdSide {
   color: yellow;
 }
+
+.expand-icon {
+  float: right;
+  margin-right: 10px;
+}
+
+.expand-icon svg {
+  display: block;
+  width: 26px;
+}

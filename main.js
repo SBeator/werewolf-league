@@ -108,7 +108,10 @@
       <div class="single-game-details-title"><b>${++count}.</b> ${date.getMonth() +
       1}月${date.getDate()}日, 第${game.round}局, 获胜方：<span class="win_${
       game.winSide
-    }">${getWinText(game.winSide)}</span></div>
+    }">${getWinText(game.winSide)}</span>
+    <span class="expand-icon">
+    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" transform="rotate(90) translate(0, -24)"></path></svg>
+    </span></div>
       <ul style="display:none">
         <li class="details details--header">
           <span class="details_player">玩家</span>
