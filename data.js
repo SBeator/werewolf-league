@@ -42,7 +42,7 @@ const roleSides = { thirdSide, wolves, goodmen };
 
 const gameData = [
   {
-    date: '11 Feb',
+    date: '11 Feb 2018',
     round: '1',
     winSide: 'wolves',
     players: [
@@ -97,7 +97,7 @@ const gameData = [
     ],
   },
   {
-    date: '11 Feb',
+    date: '11 Feb 2018',
     round: '2',
     winSide: 'goodmen',
     players: [
@@ -136,7 +136,7 @@ const gameData = [
     ],
   },
   {
-    date: '11 Feb',
+    date: '11 Feb 2018',
     round: '3',
     winSide: 'wolves',
     players: [
@@ -175,7 +175,7 @@ const gameData = [
     ],
   },
   {
-    date: '9 Feb',
+    date: '9 Feb 2018',
     round: '1',
     winSide: 'wolves',
     players: [
@@ -230,7 +230,7 @@ const gameData = [
     ],
   },
   {
-    date: '9 Feb',
+    date: '9 Feb 2018',
     round: '2',
     winSide: 'goodmen',
     players: [
@@ -269,7 +269,7 @@ const gameData = [
     ],
   },
   {
-    date: '2 Feb',
+    date: '2 Feb 2018',
     round: '1',
     winSide: 'wolves',
     players: [
@@ -328,7 +328,7 @@ const gameData = [
     ],
   },
   {
-    date: '2 Feb',
+    date: '2 Feb 2018',
     round: '2',
     winSide: 'goodmen',
     players: [
