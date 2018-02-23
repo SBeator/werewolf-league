@@ -105,14 +105,14 @@
 
     return `
     <div class="single-game-details">
-      <div class="single-game-details-title">#${++count}# ${date.getMonth() +
-      1}月${date.getDate()}日, Round ${game.round}, 获胜方：<span class="win_${
+      <div class="single-game-details-title"><b>${++count}.</b> ${date.getMonth() +
+      1}月${date.getDate()}日, 第${game.round}局, 获胜方：<span class="win_${
       game.winSide
     }">${getWinText(game.winSide)}</span></div>
       <ul style="display:none">
         <li class="details details--header">
-          <span class="details_player">Player</span>
-          <span class="details_character">Character</span>
+          <span class="details_player">玩家</span>
+          <span class="details_character">角色</span>
           <span class="details_result">Win/Loss</span>
         </li>
         ${playerInfos}
