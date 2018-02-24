@@ -134,7 +134,7 @@ li {
 }
 
 .win_thirdSide {
-  color: yellow;
+  color: blue;
 }
 
 .expand-icon {
@@ -145,4 +145,10 @@ li {
 .expand-icon svg {
   display: block;
   width: 26px;
+}
+
+.heart {
+  width: 25px;
+  height: 20px;
+  float: left;
 }
