@@ -36,11 +36,64 @@ const goodmen = {
   villager: '村民',
 };
 
-const thirdSide = {};
+const thirdSide = {
+  cupid: '丘比特',
+  wolf: '狼',
+  hunter: '猎人',
+};
 
 const roleSides = { thirdSide, wolves, goodmen };
 
 const gameData = [
+  {
+    date: '23 Feb 2018',
+    round: '1',
+    winSide: 'thirdSide',
+    players: [
+      {
+        name: players.wangpei,
+        character: goodmen.seer,
+      },
+      {
+        name: players.liaoguolong,
+        character: thirdSide.hunter,
+        lover: true,
+      },
+      {
+        name: players.zengxingxin,
+        character: thirdSide.wolf,
+        lover: true,
+      },
+      {
+        name: players.liuruoran,
+        character: goodmen.witcher,
+      },
+      {
+        name: players.zhipu,
+        character: thirdSide.cupid,
+      },
+      {
+        name: players.sundi,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liushan,
+        character: goodmen.villager,
+      },
+      {
+        name: players.duweike,
+        character: wolves.normal,
+      },
+      {
+        name: players.liuruoran,
+        character: wolves.normal,
+      },
+      {
+        name: players.sundi,
+        character: wolves.normal,
+      },
+    ],
+  },
   {
     date: '11 Feb 2018',
     round: '1',
@@ -296,10 +349,12 @@ const gameData = [
       {
         name: players.liuruoran,
         character: goodmen.seer,
+        lover: true,
       },
       {
         name: players.liushan,
         character: goodmen.villager,
+        lover: true,
       },
       {
         name: players.linchen,
