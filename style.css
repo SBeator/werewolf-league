@@ -106,11 +106,11 @@ li {
 }
 
 .details_character {
-  width: 20%;
+  width: 34%;
 }
 
 .details_result {
-  width: 30%;
+  width: 20%;
 }
 
 .details_win .details_result {
@@ -148,7 +148,12 @@ li {
 }
 
 .heart {
-  width: 25px;
-  height: 20px;
+  width: 20px;
   float: left;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+.heart img {
+  width: 100%;
 }
