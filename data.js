@@ -264,7 +264,7 @@ const gameData = [
         character: wolves.normal,
       },
       {
-        name: players.sundi,
+        name: players.linchen,
         character: wolves.normal,
       },
     ],
