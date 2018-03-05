@@ -264,10 +264,6 @@ const gameData = [
         character: wolves.normal,
       },
       {
-        name: players.liuruoran,
-        character: wolves.normal,
-      },
-      {
         name: players.sundi,
         character: wolves.normal,
       },
