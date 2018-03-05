@@ -18,6 +18,8 @@ const players = {
   linning: '林宁',
   liaoguolong: '廖国龙',
   xiaozhanfei: '肖战菲',
+  nanlong: '南龙',
+  wangbing: '王冰',
 };
 
 const wolves = {
@@ -46,6 +48,96 @@ const thirdSide = {
 const roleSides = { thirdSide, wolves, goodmen };
 
 const gameData = [
+  {
+    date: '2 March 2018',
+    round: '1',
+    winSide: 'wolves',
+    players: [
+      {
+        name: players.liaoguolong,
+        character: goodmen.seer,
+      },
+      {
+        name: players.sundi,
+        character: goodmen.hunter,
+      },
+      {
+        name: players.zengxingxin,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liucong,
+        character: goodmen.villager,
+      },
+      {
+        name: players.nanlong,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liushan,
+        character: goodmen.villager,
+      },
+      {
+        name: players.yuyang,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liuruoran,
+        character: wolves.normal,
+      },
+      {
+        name: players.linchen,
+        character: wolves.normal,
+      },
+      {
+        name: players.duweike,
+        character: wolves.normal,
+      },
+    ],
+  },
+  {
+    date: '2 March 2018',
+    round: '2',
+    winSide: 'wolves',
+    players: [
+      {
+        name: players.duweike,
+        character: goodmen.seer,
+      },
+      {
+        name: players.liuruoran,
+        character: goodmen.hunter,
+      },
+      {
+        name: players.wangbing,
+        character: goodmen.witcher,
+      },
+      {
+        name: players.sundi,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liushan,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liaoguolong,
+        character: goodmen.villager,
+      },
+      {
+        name: players.nanlong,
+        character: wolves.normal,
+      },
+      {
+        name: players.linchen,
+        character: wolves.normal,
+      },
+      {
+        name: players.yuyang,
+        character: wolves.normal,
+      },
+    ],
+  },
   {
     date: '24 Feb 2018',
     round: '1',

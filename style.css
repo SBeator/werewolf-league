@@ -78,10 +78,15 @@ li {
 }
 
 .person__name {
-  width: 40%;
+  width: 25%;
 }
 
 .person__score {
+  width: 15%;
+  text-align: center;
+}
+
+.person__rate {
   width: 20%;
 }
 

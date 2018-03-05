@@ -25,16 +25,20 @@
     gameData.forEach(game => {
       const winSide = game.winSide;
       game.players.forEach(player => {
+        let playerInScoreList = getPlayerInData(player.name);
+
+        if (!playerInScoreList) {
+          playerInScoreList = {
+            name: player.name,
+            score: 0,
+            count: 0,
+          };
+          scoreList.push(playerInScoreList);
+        }
+
+        playerInScoreList.count++;
         if (isPlayerWin(player.character, winSide)) {
-          const playerInScoreList = getPlayerInData(player.name);
-          if (playerInScoreList) {
-            playerInScoreList.score++;
-          } else {
-            scoreList.push({
-              name: player.name,
-              score: 1,
-            });
-          }
+          playerInScoreList.score++;
         }
       });
     });
@@ -67,12 +71,21 @@
 
   function buildScoreBoard() {
     return scoreList
-      .sort((a, b) => b.score - a.score)
-      .map(
-        ({ name, score }, idx) =>
-          `<li class='person'><span class='person__rank'>${idx +
-            1}</span><span class='person__name'>${name}</span><span class='person__score'>${score}</span></li>`
-      )
+      .filter(a => a.score > 0)
+      .sort((a, b) => {
+        let compare = b.score - a.score;
+        if (compare === 0) {
+          compare = b.count - a.count;
+        }
+        return compare;
+      })
+      .map(({ name, score, count }, idx) => {
+        const rate = (score / count * 100).toFixed(2);
+        return `<li class='person'><span class='person__rank'>${idx +
+          1}</span><span class='person__name'>${name}</span>
+            <span class='person__score'>${score}</span>
+            <span class='person__rate'>${rate}%</span></li>`;
+      })
       .join('');
   }
 
