@@ -20,6 +20,8 @@ const players = {
   xiaozhanfei: '肖战菲',
   nanlong: '南龙',
   wangbing: '王冰',
+  yaohongchang: '姚宏昌',
+  yangyaping: '杨亚萍',
 };
 
 const wolves = {
@@ -48,6 +50,135 @@ const thirdSide = {
 const roleSides = { thirdSide, wolves, goodmen };
 
 const gameData = [
+  {
+    date: '30 March 2018',
+    round: '1',
+    winSide: 'wolves',
+    players: [
+      {
+        name: players.liuruoran,
+        character: goodmen.seer,
+      },
+      {
+        name: players.linchen,
+        character: goodmen.hunter,
+      },
+      {
+        name: players.yuyang,
+        character: goodmen.witcher,
+      },
+      {
+        name: players.yaohongchang,
+        character: goodmen.villager,
+      },
+      {
+        name: players.zenglei,
+        character: goodmen.villager,
+      },
+      {
+        name: players.wangbing,
+        character: goodmen.villager,
+      },
+      {
+        name: players.zengxingxin,
+        character: wolves.normal,
+      },
+      {
+        name: players.yangyi,
+        character: wolves.normal,
+      },
+      {
+        name: players.yangyaping,
+        character: wolves.normal,
+      },
+    ],
+  },
+  {
+    date: '30 March 2018',
+    round: '2',
+    winSide: 'goodmen',
+    players: [
+      {
+        name: players.zengxingxin,
+        character: goodmen.seer,
+      },
+      {
+        name: players.duweike,
+        character: goodmen.hunter,
+      },
+      {
+        name: players.yaohongchang,
+        character: goodmen.witcher,
+      },
+      {
+        name: players.yuyang,
+        character: goodmen.villager,
+      },
+      {
+        name: players.wangpei,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liuruoran,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liushan,
+        character: wolves.normal,
+      },
+      {
+        name: players.linchen,
+        character: wolves.normal,
+      },
+      {
+        name: players.zenglei,
+        character: wolves.normal,
+      },
+    ],
+  },
+  {
+    date: '30 March 2018',
+    round: '3',
+    winSide: 'wolves',
+    players: [
+      {
+        name: players.zengxingxin,
+        character: goodmen.seer,
+      },
+      {
+        name: players.yaohongchang,
+        character: goodmen.hunter,
+      },
+      {
+        name: players.liuruoran,
+        character: goodmen.witcher,
+      },
+      {
+        name: players.yangyaping,
+        character: goodmen.villager,
+      },
+      {
+        name: players.wangpei,
+        character: goodmen.villager,
+      },
+      {
+        name: players.linchen,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liushan,
+        character: wolves.normal,
+      },
+      {
+        name: players.duweike,
+        character: wolves.normal,
+      },
+      {
+        name: players.zenglei,
+        character: wolves.normal,
+      },
+    ],
+  },
   {
     date: '2 March 2018',
     round: '1',
