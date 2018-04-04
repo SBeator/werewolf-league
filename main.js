@@ -10,12 +10,15 @@
 
   function buildGameResultDetailsBoard() {
     const detailsBoard = gameData
-      .sort(
-        (a, b) =>
-          new Date(a.date) > new Date(b.date)
-            ? true
-            : new Date(a.date) < new Date(b.date) ? false : a.round > b.round
-      )
+      .sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+
+        const aLarger = dateA > dateB;
+        const bLarger = dateA < dateB;
+
+        return aLarger ? 1 : bLarger ? -1 : a.round - b.round;
+      })
       .map(game => buildOneGameResultBoard(game))
       .join('');
     $('.game-details').append(detailsBoard);
