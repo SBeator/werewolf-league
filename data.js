@@ -51,6 +51,53 @@ const roleSides = { thirdSide, wolves, goodmen };
 
 const gameData = [
   {
+    date: '04 April 2018',
+    round: '1',
+    winSide: 'goodmen',
+    players: [
+      {
+        name: players.zenglei,
+        character: goodmen.seer,
+      },
+      {
+        name: players.zhipu,
+        character: goodmen.hunter,
+      },
+      {
+        name: players.yuyang,
+        character: goodmen.witcher,
+      },
+      {
+        name: players.linchen,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liushan,
+        character: goodmen.villager,
+      },
+      {
+        name: players.yaohongchang,
+        character: goodmen.villager,
+      },
+      {
+        name: players.duweike,
+        character: goodmen.villager,
+      },
+      {
+        name: players.liuruoran,
+        character: wolves.gun,
+      },
+      {
+        name: players.yangyi,
+        character: wolves.normal,
+      },
+      {
+        name: players.sundi,
+        character: wolves.normal,
+      },
+    ],
+  },
+  {
     date: '30 March 2018',
     round: '1',
     winSide: 'wolves',
