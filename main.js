@@ -4,9 +4,11 @@
   let count = 0;
   buildScoreList();
   $('.score-board').after(buildScoreBoard());
+  $('.board-container').append(buildScoreNames());
   buildGameResultDetailsBoard();
   buidlLastUpdateTime();
   handleDetailsToggleEvent();
+  handleScrollEvent();
 
   function buildGameResultDetailsBoard() {
     const detailsBoard = gameData
@@ -100,16 +102,18 @@
     };
   }
 
+  function sortScoreList() {
+    return scoreList.filter(a => a.score > 0).sort((a, b) => {
+      let compare = b.score - a.score;
+      if (compare === 0) {
+        compare = b.count - a.count;
+      }
+      return compare;
+    });
+  }
+
   function buildScoreBoard() {
-    return scoreList
-      .filter(a => a.score > 0)
-      .sort((a, b) => {
-        let compare = b.score - a.score;
-        if (compare === 0) {
-          compare = b.count - a.count;
-        }
-        return compare;
-      })
+    return sortScoreList()
       .map(
         (
           {
@@ -147,6 +151,23 @@
         }
       )
       .join('');
+  }
+
+  function buildScoreNames() {
+    const names = sortScoreList()
+      .map(({ name }, idx) => {
+        return `<li class='person'><span class='person__name'>${name}</span>
+            </li>`;
+      })
+      .join('');
+
+    return `
+    <ul class="hide-name">
+      <li class="person person--header">
+        <span class="person__name">玩家</span>
+      </li>
+      ${names}
+    </ul>`;
   }
 
   function buildOneGameResultBoard(game) {
@@ -238,5 +259,15 @@
     $('.league__info').text(
       `最后更新： ${maxDate.getMonth() + 1}月${maxDate.getDate()}日`
     );
+  }
+
+  function handleScrollEvent() {
+    $('.person-ul').scroll(event => {
+      if (event.target.scrollLeft > 50) {
+        $('.hide-name').show();
+      } else {
+        $('.hide-name').hide();
+      }
+    });
   }
 })();
