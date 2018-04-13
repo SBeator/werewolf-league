@@ -124,16 +124,23 @@
           idx
         ) => {
           const rate = (score / count * 100).toFixed(2);
+          const wolfRate = wolfCount
+            ? `${(wolfWinCount / wolfCount * 100).toFixed(2)}%`
+            : 0;
+          const goodmanRate = goodmanCount
+            ? `${(goodmanWinCount / goodmanCount * 100).toFixed(2)}%`
+            : 0;
           return `<li class='person'><span class='person__rank'>${idx +
             1}</span><span class='person__name'>${name}</span>
             <span class='person__score'>${score}</span>
-            <span class='person__rate'>${rate}%</span>
-            <span class=''>${wolfWinCount}/${wolfCount}|</span>
-            <span class=''>${(wolfWinCount / wolfCount * 100).toFixed(
-              2
-            )}%|</span>
-            <span class=''>${goodmanWinCount}/${goodmanCount}|</span>
-            <span class=''>${(goodmanWinCount / goodmanCount * 100).toFixed(
+            <span class='person__result'>${rate}%</span>
+            <span class='person__result'>${wolfWinCount}/${wolfCount}</span>
+            <span class='person__result'>
+            ${wolfRate}
+            </span>
+            <span class='person__result'>${goodmanWinCount}/${goodmanCount}</span>
+            <span class='person__result'>${goodmanRate}</span>
+            <span class='person__result'>${(wolfCount / count * 100).toFixed(
               2
             )}%</span>
             </li>`;
