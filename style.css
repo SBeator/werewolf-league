@@ -59,6 +59,7 @@ li {
 
 .person-ul {
   overflow: auto;
+  position: relative;
 }
 
 .person {
@@ -99,6 +100,27 @@ li {
 .person__result {
   width: 30%;
   text-align: center;
+}
+
+.board-container {
+  position: relative;
+}
+
+.hide-name {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  display: none;
+  background: white;
+  border-right: 1px #eee solid;
+}
+
+.hide-name .person {
+  width: 70px;
+}
+
+.hide-name .person .person__name {
+  width: 100%;
 }
 
 .details {
