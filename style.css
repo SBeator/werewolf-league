@@ -57,12 +57,17 @@ li {
   font-size: 14px;
 }
 
+.person-ul {
+  overflow: auto;
+}
+
 .person {
   margin: 0;
   padding: 15px 0;
   display: flex;
   justify-content: space-around;
   font-size: 20px;
+  width: 220%;
 }
 
 .person:nth-child(even) {
@@ -75,6 +80,7 @@ li {
 
 .person__rank {
   width: 15%;
+  text-align: center;
 }
 
 .person__name {
@@ -88,6 +94,11 @@ li {
 
 .person__rate {
   width: 20%;
+}
+
+.person__result {
+  width: 30%;
+  text-align: center;
 }
 
 .details {

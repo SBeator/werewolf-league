@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8"></meta>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +9,7 @@
   <title>狼人杀联赛积分榜(Series 1）</title>
   <link href="./icon.jpg" rel="shortcut icon">
 </head>
+
 <body>
   <section class="container">
     <hgroup class="title">
@@ -17,20 +19,26 @@
   </section>
   <main class="league">
     <p class="league__info">最后更新： 2月8日</p>
-    <ul>
+    <ul class="person-ul">
       <li class="person person--header score-board">
         <span class="person__rank">排名</span>
         <span class="person__name">玩家</span>
         <span class="person__score">分数</span>
-        <span class="person__rate">胜率</span>
+        <span class="person__result">胜率</span>
+        <span class="person__result">狼人战绩</span>
+        <span class="person__result">狼人胜率</span>
+        <span class="person__result">好人战绩</span>
+        <span class="person__result">好人胜率</span>
+        <span class="person__result">拿狼比率</span>
       </li>
     </ul>
     <h3>详细战况：</h3>
     <div class="game-details"></div>
-    
+
   </main>
   <script src="./data.js"></script>
   <script src="./main.js"></script>
   <script src="./validation.js"></script>
 </body>
+
 </html>

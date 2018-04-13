@@ -35,6 +35,10 @@
             name: player.name,
             score: 0,
             count: 0,
+            wolfCount: 0,
+            wolfWinCount: 0,
+            goodmanCount: 0,
+            goodmanWinCount: 0,
           };
           scoreList.push(playerInScoreList);
         }
@@ -42,6 +46,22 @@
         playerInScoreList.count++;
         if (isPlayerWin(player.character, winSide)) {
           playerInScoreList.score++;
+
+          if (isWolf(player.character)) {
+            playerInScoreList.wolfWinCount++;
+          }
+
+          if (isGoodman(player.character)) {
+            playerInScoreList.goodmanWinCount++;
+          }
+        }
+
+        if (isWolf(player.character)) {
+          playerInScoreList.wolfCount++;
+        }
+
+        if (isGoodman(player.character)) {
+          playerInScoreList.goodmanCount++;
         }
       });
     });
@@ -49,6 +69,14 @@
 
   function isPlayerWin(character, winSide) {
     return Object.values(roleSides[winSide]).indexOf(character) >= 0;
+  }
+
+  function isWolf(character) {
+    return Object.values(roleSides.wolves).indexOf(character) >= 0;
+  }
+
+  function isGoodman(character) {
+    return Object.values(roleSides.goodmen).indexOf(character) >= 0;
   }
 
   function getPlayerInData(playerName) {
@@ -82,13 +110,42 @@
         }
         return compare;
       })
-      .map(({ name, score, count }, idx) => {
-        const rate = (score / count * 100).toFixed(2);
-        return `<li class='person'><span class='person__rank'>${idx +
-          1}</span><span class='person__name'>${name}</span>
+      .map(
+        (
+          {
+            name,
+            score,
+            count,
+            wolfCount,
+            wolfWinCount,
+            goodmanCount,
+            goodmanWinCount,
+          },
+          idx
+        ) => {
+          const rate = (score / count * 100).toFixed(2);
+          const wolfRate = wolfCount
+            ? `${(wolfWinCount / wolfCount * 100).toFixed(2)}%`
+            : 0;
+          const goodmanRate = goodmanCount
+            ? `${(goodmanWinCount / goodmanCount * 100).toFixed(2)}%`
+            : 0;
+          return `<li class='person'><span class='person__rank'>${idx +
+            1}</span><span class='person__name'>${name}</span>
             <span class='person__score'>${score}</span>
-            <span class='person__rate'>${rate}%</span></li>`;
-      })
+            <span class='person__result'>${rate}%</span>
+            <span class='person__result'>${wolfWinCount}/${wolfCount}</span>
+            <span class='person__result'>
+            ${wolfRate}
+            </span>
+            <span class='person__result'>${goodmanWinCount}/${goodmanCount}</span>
+            <span class='person__result'>${goodmanRate}</span>
+            <span class='person__result'>${(wolfCount / count * 100).toFixed(
+              2
+            )}%</span>
+            </li>`;
+        }
+      )
       .join('');
   }
 
