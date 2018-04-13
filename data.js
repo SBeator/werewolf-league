@@ -22,6 +22,7 @@ const players = {
   wangbing: '王冰',
   yaohongchang: '姚宏昌',
   yangyaping: '杨亚萍',
+  yangqi: '杨琪',
 };
 
 const wolves = {
@@ -50,6 +51,58 @@ const thirdSide = {
 const roleSides = { thirdSide, wolves, goodmen };
 
 const gameData = [
+  {
+    date: '13 April 2018',
+    round: '1',
+    winSide: 'wolves',
+    players: [
+      {
+        name: players.zenglei,
+        character: goodmen.seer,
+      },
+      {
+        name: players.yangyi,
+        character: goodmen.hunter,
+      },
+      {
+        name: players.yaohongchang,
+        character: goodmen.witcher,
+      },
+      {
+        name: players.duweike,
+        character: goodmen.guard,
+      },
+      {
+        name: players.yangyaping,
+        character: goodmen.villager,
+      },
+      {
+        name: players.yangqi,
+        character: goodmen.villager,
+      },
+      {
+        name: players.sundi,
+        character: goodmen.villager,
+      },
+      {
+        name: players.linchen,
+        character: wolves.normal,
+      },
+      {
+        name: players.liushan,
+        character: wolves.normal,
+      },
+      {
+        name: players.liuruoran,
+        character: wolves.normal,
+      },
+      {
+        name: players.zengxingxin,
+        character: wolves.normal,
+      },
+    ],
+  },
+
   {
     date: '04 April 2018',
     round: '1',
