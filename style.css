@@ -203,12 +203,16 @@ li {
 .fix-header {
   position: absolute;
   top: 0;
-  background: white;
+  background: green;
   margin: 0;
   z-index: 999;
   display: none;
   border-bottom: #eee solid 1px;
   overflow: hidden;
+}
+
+.fix-header .person {
+  background: green;
 }
 
 .fix-header .header-person-name {
