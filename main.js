@@ -387,6 +387,13 @@
   }
 
   function dupFixHeader() {
+    $(document.body).on('touchmove', () => {
+      $('.person-ul')
+        .find('.person__rank')
+        .eq(2)
+        .text('heiheihei');
+    });
+
     const $personUl = $('.person-ul');
     const $fixHeader = $($personUl[0].outerHTML);
 
@@ -435,7 +442,6 @@
       }
     }
 
-    $(document.body).on('touchmove', windowScroll);
     $(window).on('scroll', windowScroll);
   }
 })();
