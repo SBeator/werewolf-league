@@ -418,6 +418,10 @@
         $fixHeader.css('margin-top', -rect.y);
         $personUl.on('scroll', scrollFixHeader);
         scrollFixHeader();
+
+        if (rect.y < -30) {
+          alert($fixHeader[0].outerHTML);
+        }
       } else {
         $personUl.off('scroll', scrollFixHeader);
         $fixHeader.hide();
