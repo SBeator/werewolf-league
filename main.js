@@ -409,7 +409,7 @@
       $fixHeader.find('li').css('margin-left', 0 - $personUl.scrollLeft());
     }
 
-    $(window).scroll(() => {
+    $(window).on('scroll touchmove', () => {
       $('.person-ul')
         .find('.person__rank')
         .eq(1)
