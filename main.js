@@ -409,7 +409,7 @@
       $fixHeader.find('li').css('margin-left', 0 - $personUl.scrollLeft());
     }
 
-    $(window).on('scroll touchmove', () => {
+    function windowScroll() {
       $('.person-ul')
         .find('.person__rank')
         .eq(1)
@@ -433,6 +433,9 @@
         $personUl.off('scroll', scrollFixHeader);
         $fixHeader.hide();
       }
-    });
+    }
+
+    $(document.body).on('touchmove', windowScroll);
+    $(window).on('scroll', windowScroll);
   }
 })();
