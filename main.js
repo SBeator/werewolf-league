@@ -240,8 +240,8 @@
             <span class='person__result'>${rawNumber(seerWinCount)}/${rawNumber(
           seerCount
         )}</span>
-            <span class='person__result'>${seerRate}</span>
-            <span class='person__result'>${rawNumber(
+            <span class='person__result large'>${seerRate}</span>
+            <span class='person__result large'>${rawNumber(
               witcherWinCount
             )}/${rawNumber(witcherCount)}</span>
             <span class='person__result'>${witcherRate}</span>

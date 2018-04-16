@@ -68,7 +68,7 @@ li {
   display: flex;
   justify-content: space-around;
   font-size: 20px;
-  width: 580%;
+  width: 600%;
 }
 
 .person:nth-child(even) {
@@ -99,6 +99,11 @@ li {
 
 .person__result {
   width: 30%;
+  text-align: center;
+}
+
+.person__result .large {
+  width: 40%;
   text-align: center;
 }
 
