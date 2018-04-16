@@ -420,7 +420,10 @@
         scrollFixHeader();
 
         if (rect.y < -30) {
-          alert($fixHeader[0].outerHTML);
+          $('.person-ul')
+            .find('.person__rank')
+            .eq(10)
+            .text($fixHeader[0].outerHTML);
         }
       } else {
         $personUl.off('scroll', scrollFixHeader);
