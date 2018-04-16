@@ -410,6 +410,10 @@
     }
 
     $(window).scroll(() => {
+      $('.person-ul')
+        .find('.person__rank')
+        .eq(1)
+        .text('lalala');
       const rect = $('.person-ul')[0].getBoundingClientRect();
 
       if (rect.y < 0 && rect.y + rect.height > 57) {
