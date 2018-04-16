@@ -401,7 +401,7 @@
       .addClass('fix-header')
       .find('.score-board')
       .removeClass('score-board');
-    $fixHeader.css('width', $personUl.width());
+    $fixHeader.css('width', $personUl.css('width'));
 
     $('.board-container').prepend($fixHeader);
 
