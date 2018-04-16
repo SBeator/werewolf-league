@@ -1,4 +1,4 @@
-(function() {
+(function () {
   let scoreList = [];
 
   let count = 0;
@@ -86,13 +86,13 @@
       key = Object.keys(wolves);
     }
 
-    playerInScoreList[`${key}Count`] = playerInScoreList[`${key}Count`]
-      ? playerInScoreList[`${key}Count`] + 1
-      : 1;
+    playerInScoreList[`${key}Count`] = playerInScoreList[`${key}Count`] ?
+      playerInScoreList[`${key}Count`] + 1 :
+      1;
     if (isWin) {
-      playerInScoreList[`${key}WinCount`] = playerInScoreList[`${key}WinCount`]
-        ? playerInScoreList[`${key}WinCount`] + 1
-        : 1;
+      playerInScoreList[`${key}WinCount`] = playerInScoreList[`${key}WinCount`] ?
+        playerInScoreList[`${key}WinCount`] + 1 :
+        1;
     }
   }
 
@@ -166,55 +166,55 @@
           villagerWinCount,
         } = playerInScoreList;
         const rate = (score / count * 100).toFixed(2);
-        const wolfRate = wolfCount
-          ? `${(wolfWinCount / wolfCount * 100).toFixed(2)}%`
-          : 0;
-        const goodmanRate = goodmanCount
-          ? `${(goodmanWinCount / goodmanCount * 100).toFixed(2)}%`
-          : 0;
+        const wolfRate = wolfCount ?
+          `${(wolfWinCount / wolfCount * 100).toFixed(2)}%` :
+          0;
+        const goodmanRate = goodmanCount ?
+          `${(goodmanWinCount / goodmanCount * 100).toFixed(2)}%` :
+          0;
 
         const pickWolfRate = `${(wolfCount / count * 100).toFixed(2)}%`;
 
-        const villagerRate = villagerCount
-          ? `${(
+        const villagerRate = villagerCount ?
+          `${(
               rawNumber(villagerWinCount) /
               rawNumber(villagerCount) *
               100
-            ).toFixed(2)}%`
-          : 0;
-        const seerRate = seerCount
-          ? `${(rawNumber(seerWinCount) / rawNumber(seerCount) * 100).toFixed(
+            ).toFixed(2)}%` :
+          0;
+        const seerRate = seerCount ?
+          `${(rawNumber(seerWinCount) / rawNumber(seerCount) * 100).toFixed(
               2
-            )}%`
-          : 0;
+            )}%` :
+          0;
 
-        const witcherRate = witcherCount
-          ? `${(
+        const witcherRate = witcherCount ?
+          `${(
               rawNumber(witcherWinCount) /
               rawNumber(witcherCount) *
               100
-            ).toFixed(2)}%`
-          : 0;
+            ).toFixed(2)}%` :
+          0;
 
-        const hunterRate = hunterCount
-          ? `${(
+        const hunterRate = hunterCount ?
+          `${(
               rawNumber(hunterWinCount) /
               rawNumber(hunterCount) *
               100
-            ).toFixed(2)}%`
-          : 0;
+            ).toFixed(2)}%` :
+          0;
 
-        const guardRate = guardCount
-          ? `${(rawNumber(guardWinCount) / rawNumber(guardCount) * 100).toFixed(
+        const guardRate = guardCount ?
+          `${(rawNumber(guardWinCount) / rawNumber(guardCount) * 100).toFixed(
               2
-            )}%`
-          : 0;
+            )}%` :
+          0;
 
-        const idiotRate = idiotCount
-          ? `${(rawNumber(idiotWinCount) / rawNumber(idiotCount) * 100).toFixed(
+        const idiotRate = idiotCount ?
+          `${(rawNumber(idiotWinCount) / rawNumber(idiotCount) * 100).toFixed(
               2
-            )}%`
-          : 0;
+            )}%` :
+          0;
 
         return `<li class='person'><span class='person__rank'>${idx +
           1}</span><span class='person__name'>${name}</span>
@@ -268,7 +268,9 @@
 
   function buildScoreNames() {
     const names = sortScoreList()
-      .map(({ name }, idx) => {
+      .map(({
+        name
+      }, idx) => {
         return `<li class='person'><span class='person__name'>${name}</span>
             </li>`;
       })
@@ -335,7 +337,7 @@
   }
 
   function handleDetailsToggleEvent() {
-    $('.game-details').on('click', '.single-game-details-title', function() {
+    $('.game-details').on('click', '.single-game-details-title', function () {
       const $this = $(this);
       $this
         .parents('.single-game-details')
@@ -365,7 +367,7 @@
       .map(game => new Date(game.date))
       .reduce(
         (lastData, currectDate) =>
-          lastData > currectDate ? lastData : currectDate,
+        lastData > currectDate ? lastData : currectDate,
         0
       );
 
@@ -414,6 +416,8 @@
 
       if (rect.y < 0 && rect.y + rect.height > 57) {
         $fixHeader.show();
+
+        $fixHeader.css('margin-top', -rect.y);
         $personUl.on('scroll', scrollFixHeader);
         scrollFixHeader();
       } else {

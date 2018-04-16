@@ -201,7 +201,7 @@ li {
 }
 
 .fix-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   background: white;
   margin: 0;
