@@ -303,6 +303,7 @@
       if (rect.y < 0 && rect.y + rect.height > 57) {
         $fixHeader.show();
         $personUl.on('scroll', scrollFixHeader);
+        scrollFixHeader();
       } else {
         $personUl.off('scroll', scrollFixHeader);
         $fixHeader.hide();
