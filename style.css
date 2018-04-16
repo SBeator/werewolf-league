@@ -195,3 +195,25 @@ li {
 .heart img {
   width: 100%;
 }
+
+.fix-header {
+  position: fixed;
+  top: 0;
+  background: white;
+  margin: 0;
+  z-index: 999;
+  display: none;
+  border-bottom: #eee solid 1px;
+  overflow: hidden;
+}
+
+.fix-header .header-person-name {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 71px;
+  font-weight: bold;
+  background: white;
+  border-right: #eee solid 1px;
+  display: none;
+}
