@@ -446,7 +446,15 @@
         .eq(3)
         .text('lalala');
       const rect = $('.person-ul')[0].getBoundingClientRect();
+      $('.person-ul')
+        .find('.person__rank')
+        .eq(2)
+        .text(rect.y);
 
+      $('.person-ul')
+        .find('.person__rank')
+        .eq(3)
+        .text(rect.height);
       if (rect.y < 0 && rect.y + rect.height > 57) {
         $fixHeader.show();
 
