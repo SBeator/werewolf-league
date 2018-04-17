@@ -444,7 +444,17 @@
       $('.person-ul')
         .find('.person__rank')
         .eq(3)
-        .text('lalala');
+        .text('aaaa');
+
+      $('.person-ul')
+        .find('.person__rank')
+        .eq(3)
+        .text($('.person-ul')[0].getBoundingClientRect);
+
+      $('.person-ul')
+        .find('.person__rank')
+        .eq(4)
+        .text($('.person-ul')[0].getBoundingClientRect());
       const rect = $('.person-ul')[0].getBoundingClientRect();
       $('.person-ul')
         .find('.person__rank')
