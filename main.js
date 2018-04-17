@@ -387,11 +387,22 @@
   }
 
   function dupFixHeader() {
+    $('.person-ul')
+      .find('.person__rank')
+      .eq(3)
+      .text('wowoow');
     $(document.body).on('touchmove', () => {
       $('.person-ul')
         .find('.person__rank')
         .eq(2)
         .text('heiheihei');
+    });
+
+    $('body').on('touchmove', () => {
+      $('.person-ul')
+        .find('.person__rank')
+        .eq(4)
+        .text('momomo');
     });
 
     const $personUl = $('.person-ul');
