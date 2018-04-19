@@ -458,7 +458,7 @@
       const rect = $('.person-ul')[0].getBoundingClientRect();
       $('.person-ul')
         .find('.person__rank')
-        .eq(2)
+        .eq(5)
         .text(JSON.stringify(rect, null, ' '));
 
       $('.person-ul')
