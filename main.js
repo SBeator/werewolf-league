@@ -459,7 +459,7 @@
       $('.person-ul')
         .find('.person__rank')
         .eq(2)
-        .text(rect.y);
+        .text(JSON.stringify(rect));
 
       $('.person-ul')
         .find('.person__rank')
