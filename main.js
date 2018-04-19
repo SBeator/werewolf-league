@@ -413,7 +413,7 @@
       const offset = $('.person-ul').offset();
       const height = $('.person-ul').height();
       const scrollTop = $(window).scrollTop();
-      if (scrollTop > offset.top && scrollTop < offset.top + height) {
+      if (scrollTop > offset.top && scrollTop < offset.top + height - 50) {
         $fixHeader.show();
 
         $fixHeader.css('margin-top', scrollTop - offset.top);
