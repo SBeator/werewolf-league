@@ -401,20 +401,12 @@
     const $personUl = $('.person-ul');
     const $fixHeader = $($personUl[0].outerHTML);
 
-    $('.person-ul')
-      .find('.person__rank')
-      .eq(1)
-      .text('2');
     $fixHeader.append(`
       <div class="header-person-name person" >
         <span>玩家</span>
       </div>
       `);
 
-    $('.person-ul')
-      .find('.person__rank')
-      .eq(1)
-      .text('3');
     $fixHeader
       .removeClass('person-ul')
       .addClass('fix-header')
@@ -422,16 +414,8 @@
       .removeClass('score-board');
     $fixHeader.css('width', $personUl.css('width'));
 
-    $('.person-ul')
-      .find('.person__rank')
-      .eq(1)
-      .text('4');
     $('.board-container').prepend($fixHeader);
 
-    $('.person-ul')
-      .find('.person__rank')
-      .eq(1)
-      .text('5');
     function scrollFixHeader() {
       $fixHeader.find('li').css('margin-left', 0 - $personUl.scrollLeft());
     }
@@ -452,16 +436,6 @@
       }
     }
 
-    $('.person-ul')
-      .find('.person__rank')
-      .eq(1)
-      .text('6');
-    $(document.body).on('touchmove', () => {
-      $('.person-ul')
-        .find('.person__rank')
-        .eq(2)
-        .text('hahaha');
-    });
     $(document.body).on('touchmove', windowScroll);
     $(window).on('scroll', windowScroll);
   }
