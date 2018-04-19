@@ -437,47 +437,15 @@
     }
 
     function windowScroll() {
-      $('.person-ul')
-        .find('.person__rank')
-        .eq(1)
-        .text('7');
-      $('.person-ul')
-        .find('.person__rank')
-        .eq(3)
-        .text('aaaa');
-
-      $('.person-ul')
-        .find('.person__rank')
-        .eq(3)
-        .text($('.person-ul')[0].getBoundingClientRect);
-
-      $('.person-ul')
-        .find('.person__rank')
-        .eq(4)
-        .text($('.person-ul')[0].getBoundingClientRect());
-      const rect = $('.person-ul')[0].getBoundingClientRect();
-      $('.person-ul')
-        .find('.person__rank')
-        .eq(5)
-        .text(JSON.stringify(rect, null, ' '));
-
-      $('.person-ul')
-        .find('.person__rank')
-        .eq(3)
-        .text(rect.height);
-      if (rect.y < 0 && rect.y + rect.height > 57) {
+      const offset = $('.person-ul').offset();
+      const height = $('.person-ul').height();
+      const scrollTop = $(window).scrollTop();
+      if (scrollTop > offset.top && scrollTop < offset.top + height) {
         $fixHeader.show();
 
-        $fixHeader.css('margin-top', -rect.y);
+        $fixHeader.css('margin-top', scrollTop - offset.top);
         $personUl.on('scroll', scrollFixHeader);
         scrollFixHeader();
-
-        if (rect.y < -30) {
-          $('.person-ul')
-            .find('.person__rank')
-            .eq(10)
-            .text($fixHeader[0].outerHTML);
-        }
       } else {
         $personUl.off('scroll', scrollFixHeader);
         $fixHeader.hide();
