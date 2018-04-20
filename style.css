@@ -117,11 +117,15 @@ li {
   left: 0;
   display: none;
   background: white;
-  border-right: 1px #eee solid;
 }
 
 .hide-name .person {
   width: 70px;
+  border-right: 1px #eee solid;
+}
+
+.hide-name .person:nth-child(even) {
+  border-right: 1px #fff solid;
 }
 
 .hide-name .person .person__name {
@@ -200,6 +204,7 @@ li {
 .heart img {
   width: 100%;
 }
+
 .fix-header {
   position: absolute;
   top: 0;
