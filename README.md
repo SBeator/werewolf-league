@@ -1,3 +1,3 @@
 # werewolf-league
 
-http://blog.sbeator.com/werewolf-league/
+https://lrrfantasy.github.io/werewolf-league/
