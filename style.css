@@ -68,7 +68,7 @@ li {
   display: flex;
   justify-content: space-around;
   font-size: 20px;
-  width: 220%;
+  width: 600%;
 }
 
 .person:nth-child(even) {
@@ -99,6 +99,11 @@ li {
 
 .person__result {
   width: 30%;
+  text-align: center;
+}
+
+.person__result .large {
+  width: 40%;
   text-align: center;
 }
 
@@ -194,4 +199,25 @@ li {
 
 .heart img {
   width: 100%;
+}
+.fix-header {
+  position: absolute;
+  top: 0;
+  background: white;
+  margin: 0;
+  z-index: 999;
+  display: none;
+  border-bottom: #eee solid 1px;
+  overflow: hidden;
+}
+
+.fix-header .header-person-name {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 70px;
+  font-weight: bold;
+  background: white;
+  border-right: #eee solid 1px;
+  display: none;
 }

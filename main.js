@@ -144,9 +144,31 @@
             </span>
             <span class='person__result'>${goodmanWinCount}/${goodmanCount}</span>
             <span class='person__result'>${goodmanRate}</span>
-            <span class='person__result'>${(wolfCount / count * 100).toFixed(
-              2
-            )}%</span>
+            <span class='person__result'>${rawNumber(
+              villagerWinCount
+            )}/${rawNumber(villagerCount)}</span>
+            <span class='person__result'>${villagerRate}</span>
+
+            <span class='person__result'>${rawNumber(seerWinCount)}/${rawNumber(
+          seerCount
+        )}</span>
+            <span class='person__result large'>${seerRate}</span>
+            <span class='person__result large'>${rawNumber(
+              witcherWinCount
+            )}/${rawNumber(witcherCount)}</span>
+            <span class='person__result'>${witcherRate}</span>
+            <span class='person__result'>${rawNumber(
+              hunterWinCount
+            )}/${rawNumber(hunterCount)}</span>
+            <span class='person__result'>${hunterRate}</span>
+            <span class='person__result'>${rawNumber(
+              guardWinCount
+            )}/${rawNumber(guardCount)}</span>
+            <span class='person__result'>${guardRate}</span>
+            <span class='person__result'>${rawNumber(
+              idiotWinCount
+            )}/${rawNumber(idiotCount)}</span>
+            <span class='person__result'>${idiotRate}</span>
             </li>`;
         }
       )
@@ -267,7 +289,51 @@
         $('.hide-name').show();
       } else {
         $('.hide-name').hide();
+        $('.header-person-name').hide();
       }
     });
+  }
+
+  function dupFixHeader() {
+    const $personUl = $('.person-ul');
+    const $fixHeader = $($personUl[0].outerHTML);
+
+    $fixHeader.append(`
+      <div class="header-person-name person" >
+        <span>玩家</span>
+      </div>
+      `);
+
+    $fixHeader
+      .removeClass('person-ul')
+      .addClass('fix-header')
+      .find('.score-board')
+      .removeClass('score-board');
+    $fixHeader.css('width', $personUl.css('width'));
+
+    $('.board-container').prepend($fixHeader);
+
+    function scrollFixHeader() {
+      $fixHeader.find('li').css('margin-left', 0 - $personUl.scrollLeft());
+    }
+
+    function windowScroll() {
+      const offset = $('.person-ul').offset();
+      const height = $('.person-ul').height();
+      const scrollTop = $(window).scrollTop();
+      if (scrollTop > offset.top && scrollTop < offset.top + height - 50) {
+        $fixHeader.show();
+
+        $fixHeader.css('margin-top', scrollTop - offset.top);
+        $personUl.on('scroll', scrollFixHeader);
+        scrollFixHeader();
+      } else {
+        $personUl.off('scroll', scrollFixHeader);
+        $fixHeader.hide();
+      }
+    }
+
+    $(document.body).on('touchmove', windowScroll);
+    $(window).on('scroll', windowScroll);
   }
 })();
