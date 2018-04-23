@@ -237,11 +237,11 @@
             )}/${rawNumber(villagerCount)}</span>
             <span class='person__result'>${villagerRate}</span>
 
-            <span class='person__result'>${rawNumber(seerWinCount)}/${rawNumber(
-          seerCount
-        )}</span>
-            <span class='person__result large'>${seerRate}</span>
             <span class='person__result large'>${rawNumber(
+              seerWinCount
+            )}/${rawNumber(seerCount)}</span>
+            <span class='person__result large'>${seerRate}</span>
+            <span class='person__result'>${rawNumber(
               witcherWinCount
             )}/${rawNumber(witcherCount)}</span>
             <span class='person__result'>${witcherRate}</span>
