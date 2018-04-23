@@ -230,8 +230,6 @@
               goodmanWinCount
             )}/${rawNumber(goodmanCount)}</span>
             <span class='person__result'>${goodmanRate}</span>
-
-
             <span class='person__result'>${rawNumber(
               villagerWinCount
             )}/${rawNumber(villagerCount)}</span>
@@ -382,6 +380,43 @@
       } else {
         $('.hide-name').hide();
         $('.header-person-name').hide();
+      }
+    });
+  }
+
+  function dupFixHeader() {
+    const $personUl = $('.person-ul');
+    const $fixHeader = $($personUl[0].outerHTML);
+
+    $fixHeader.append(`
+      <div class="header-person-name person" >
+        <span>玩家</span>
+      </div>
+      `);
+
+    $fixHeader
+      .removeClass('person-ul')
+      .addClass('fix-header')
+      .find('.score-board')
+      .removeClass('score-board');
+    $fixHeader.css('width', $personUl.width());
+
+    $('.board-container').append($fixHeader);
+
+    function scrollFixHeader() {
+      $fixHeader.find('li').css('margin-left', 0 - $personUl.scrollLeft());
+    }
+
+    $(window).scroll(() => {
+      const rect = $('.person-ul')[0].getBoundingClientRect();
+
+      if (rect.y < 0 && rect.y + rect.height > 57) {
+        $fixHeader.show();
+        $personUl.on('scroll', scrollFixHeader);
+        scrollFixHeader();
+      } else {
+        $personUl.off('scroll', scrollFixHeader);
+        $fixHeader.hide();
       }
     });
   }
