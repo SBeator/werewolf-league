@@ -2,6 +2,7 @@
   let scoreList = [];
 
   let count = 0;
+  dupFixHeader();
   buildScoreList();
   $('.score-board').after(buildScoreBoard());
   $('.board-container').append(buildScoreNames());
@@ -46,7 +47,8 @@
         }
 
         playerInScoreList.count++;
-        if (isPlayerWin(player.character, winSide)) {
+        const isWin = isPlayerWin(player.character, winSide);
+        if (isWin) {
           playerInScoreList.score++;
 
           if (isWolf(player.character)) {
@@ -65,8 +67,33 @@
         if (isGoodman(player.character)) {
           playerInScoreList.goodmanCount++;
         }
+
+        increaseCharacterCount(playerInScoreList, player.character, isWin);
       });
     });
+  }
+
+  function increaseCharacterCount(playerInScoreList, character, isWin) {
+    let key;
+
+    let index = Object.values(goodmen).indexOf(character);
+    if (index >= 0) {
+      key = Object.keys(goodmen)[index];
+    }
+
+    index = Object.values(wolves).indexOf(character);
+    if (index >= 0) {
+      key = Object.keys(wolves);
+    }
+
+    playerInScoreList[`${key}Count`] = playerInScoreList[`${key}Count`]
+      ? playerInScoreList[`${key}Count`] + 1
+      : 1;
+    if (isWin) {
+      playerInScoreList[`${key}WinCount`] = playerInScoreList[`${key}WinCount`]
+        ? playerInScoreList[`${key}WinCount`] + 1
+        : 1;
+    }
   }
 
   function isPlayerWin(character, winSide) {
@@ -114,35 +141,94 @@
 
   function buildScoreBoard() {
     return sortScoreList()
-      .map(
-        (
-          {
-            name,
-            score,
-            count,
-            wolfCount,
-            wolfWinCount,
-            goodmanCount,
-            goodmanWinCount,
-          },
-          idx
-        ) => {
-          const rate = (score / count * 100).toFixed(2);
-          const wolfRate = wolfCount
-            ? `${(wolfWinCount / wolfCount * 100).toFixed(2)}%`
-            : 0;
-          const goodmanRate = goodmanCount
-            ? `${(goodmanWinCount / goodmanCount * 100).toFixed(2)}%`
-            : 0;
-          return `<li class='person'><span class='person__rank'>${idx +
-            1}</span><span class='person__name'>${name}</span>
+      .map((playerInScoreList, idx) => {
+        const {
+          name,
+          score,
+          count,
+          wolfCount,
+          wolfWinCount,
+          goodmanCount,
+          goodmanWinCount,
+          seerCount,
+          seerWinCount,
+          witcherCount,
+          witcherWinCount,
+          hunterCount,
+          hunterWinCount,
+          guardCount,
+          guardWinCount,
+          cupidCount,
+          cupidWinCount,
+          idiotCount,
+          idiotWinCount,
+          villagerCount,
+          villagerWinCount,
+        } = playerInScoreList;
+        const rate = (score / count * 100).toFixed(2);
+        const wolfRate = wolfCount
+          ? `${(wolfWinCount / wolfCount * 100).toFixed(2)}%`
+          : 0;
+        const goodmanRate = goodmanCount
+          ? `${(goodmanWinCount / goodmanCount * 100).toFixed(2)}%`
+          : 0;
+
+        const pickWolfRate = `${(wolfCount / count * 100).toFixed(2)}%`;
+
+        const villagerRate = villagerCount
+          ? `${(
+              rawNumber(villagerWinCount) /
+              rawNumber(villagerCount) *
+              100
+            ).toFixed(2)}%`
+          : 0;
+        const seerRate = seerCount
+          ? `${(rawNumber(seerWinCount) / rawNumber(seerCount) * 100).toFixed(
+              2
+            )}%`
+          : 0;
+
+        const witcherRate = witcherCount
+          ? `${(
+              rawNumber(witcherWinCount) /
+              rawNumber(witcherCount) *
+              100
+            ).toFixed(2)}%`
+          : 0;
+
+        const hunterRate = hunterCount
+          ? `${(
+              rawNumber(hunterWinCount) /
+              rawNumber(hunterCount) *
+              100
+            ).toFixed(2)}%`
+          : 0;
+
+        const guardRate = guardCount
+          ? `${(rawNumber(guardWinCount) / rawNumber(guardCount) * 100).toFixed(
+              2
+            )}%`
+          : 0;
+
+        const idiotRate = idiotCount
+          ? `${(rawNumber(idiotWinCount) / rawNumber(idiotCount) * 100).toFixed(
+              2
+            )}%`
+          : 0;
+
+        return `<li class='person'><span class='person__rank'>${idx +
+          1}</span><span class='person__name'>${name}</span>
             <span class='person__score'>${score}</span>
             <span class='person__result'>${rate}%</span>
             <span class='person__result'>${wolfWinCount}/${wolfCount}</span>
             <span class='person__result'>
             ${wolfRate}
             </span>
-            <span class='person__result'>${goodmanWinCount}/${goodmanCount}</span>
+            <span class='person__result'>${pickWolfRate}</span>
+
+            <span class='person__result'>${rawNumber(
+              goodmanWinCount
+            )}/${rawNumber(goodmanCount)}</span>
             <span class='person__result'>${goodmanRate}</span>
             <span class='person__result'>${rawNumber(
               villagerWinCount
@@ -170,9 +256,12 @@
             )}/${rawNumber(idiotCount)}</span>
             <span class='person__result'>${idiotRate}</span>
             </li>`;
-        }
-      )
+      })
       .join('');
+  }
+
+  function rawNumber(number) {
+    return number ? number : 0;
   }
 
   function buildScoreNames() {
@@ -287,9 +376,47 @@
     $('.person-ul').scroll(event => {
       if (event.target.scrollLeft > 50) {
         $('.hide-name').show();
+        $('.header-person-name').show();
       } else {
         $('.hide-name').hide();
         $('.header-person-name').hide();
+      }
+    });
+  }
+
+  function dupFixHeader() {
+    const $personUl = $('.person-ul');
+    const $fixHeader = $($personUl[0].outerHTML);
+
+    $fixHeader.append(`
+      <div class="header-person-name person" >
+        <span>玩家</span>
+      </div>
+      `);
+
+    $fixHeader
+      .removeClass('person-ul')
+      .addClass('fix-header')
+      .find('.score-board')
+      .removeClass('score-board');
+    $fixHeader.css('width', $personUl.width());
+
+    $('.board-container').append($fixHeader);
+
+    function scrollFixHeader() {
+      $fixHeader.find('li').css('margin-left', 0 - $personUl.scrollLeft());
+    }
+
+    $(window).scroll(() => {
+      const rect = $('.person-ul')[0].getBoundingClientRect();
+
+      if (rect.y < 0 && rect.y + rect.height > 57) {
+        $fixHeader.show();
+        $personUl.on('scroll', scrollFixHeader);
+        scrollFixHeader();
+      } else {
+        $personUl.off('scroll', scrollFixHeader);
+        $fixHeader.hide();
       }
     });
   }
