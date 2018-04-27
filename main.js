@@ -219,7 +219,7 @@
         return `<li class='person'><span class='person__rank'>${idx +
           1}</span><span class='person__name'>${name}</span>
             <span class='person__score'>${score}</span>
-            <span class='person__score'>${count}</span>
+            <span class='person__result'>${count}</span>
             <span class='person__result'>${rate}%</span>
             <span class='person__result'>${wolfWinCount}/${wolfCount}</span>
             <span class='person__result'>
