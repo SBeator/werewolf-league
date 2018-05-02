@@ -1,6 +1,13 @@
 (function() {
   let scoreList = [];
 
+  let sortParamers = {
+    primary: 'score',
+    secondery: 'count',
+    reverse: false,
+    secondReverse: false,
+  };
+
   let count = 0;
   dupFixHeader();
   buildScoreList();
@@ -206,13 +213,25 @@
   }
 
   function sortScoreList() {
+    const { primary, reverse, secondery, secondReverse } = sortParamers;
+
     return scoreList.filter(a => a.score > 0).sort((a, b) => {
-      let compare = b.score - a.score;
-      if (compare === 0) {
-        compare = b.count - a.count;
+      let compare = b[primary] - a[primary];
+      compare = reverse ? -compare : compare;
+
+      if (compare === 0 && secondery) {
+        compare = b[secondery] - a[secondery];
+        compare = secondReverse ? -compare : compare;
       }
       return compare;
     });
+    // return scoreList.filter(a => a.score > 0).sort((a, b) => {
+    //   let compare = b.score - a.score;
+    //   if (compare === 0) {
+    //     compare = b.count - a.count;
+    //   }
+    //   return compare;
+    // });
   }
 
   function buildScoreBoard() {
@@ -251,56 +270,6 @@
           guardRate,
           idiotRate,
         } = playerInScoreList;
-        // const rate = (score / count * 100).toFixed(2);
-        // const wolfRate = wolfCount
-        //   ? `${(wolfWinCount / wolfCount * 100).toFixed(2)}%`
-        //   : 0;
-        // const goodmanRate = goodmanCount
-        //   ? `${(goodmanWinCount / goodmanCount * 100).toFixed(2)}%`
-        //   : 0;
-
-        // const pickWolfRate = `${(wolfCount / count * 100).toFixed(2)}%`;
-
-        // const villagerRate = villagerCount
-        //   ? `${(
-        //       rawNumber(villagerWinCount) /
-        //       rawNumber(villagerCount) *
-        //       100
-        //     ).toFixed(2)}%`
-        //   : 0;
-        // const seerRate = seerCount
-        //   ? `${(rawNumber(seerWinCount) / rawNumber(seerCount) * 100).toFixed(
-        //       2
-        //     )}%`
-        //   : 0;
-
-        // const witcherRate = witcherCount
-        //   ? `${(
-        //       rawNumber(witcherWinCount) /
-        //       rawNumber(witcherCount) *
-        //       100
-        //     ).toFixed(2)}%`
-        //   : 0;
-
-        // const hunterRate = hunterCount
-        //   ? `${(
-        //       rawNumber(hunterWinCount) /
-        //       rawNumber(hunterCount) *
-        //       100
-        //     ).toFixed(2)}%`
-        //   : 0;
-
-        // const guardRate = guardCount
-        //   ? `${(rawNumber(guardWinCount) / rawNumber(guardCount) * 100).toFixed(
-        //       2
-        //     )}%`
-        //   : 0;
-
-        // const idiotRate = idiotCount
-        //   ? `${(rawNumber(idiotWinCount) / rawNumber(idiotCount) * 100).toFixed(
-        //       2
-        //     )}%`
-        //   : 0;
 
         return `<li class='person'><span class='person__rank'>${idx +
           1}</span><span class='person__name'>${name}</span>
