@@ -20,6 +20,8 @@
   handleDetailsToggleEvent();
 
   function refreshBoard() {
+    const tableScrollLeft = $('.person-ul').scrollLeft();
+
     $('.board-container').html($emptyBoardContainer.html());
     scoreList = [];
     dupFixHeader();
@@ -28,6 +30,8 @@
     $('.board-container').append(buildScoreNames());
     handleScrollEvent();
     handleSortEvent();
+
+    $('.person-ul').scrollLeft(tableScrollLeft);
   }
 
   function handleSortEvent() {
@@ -260,11 +264,11 @@
     const { primary, reverse, secondery, secondReverse } = sortParamers;
 
     return scoreList.filter(a => a.score > 0).sort((a, b) => {
-      let compare = b[primary] - a[primary];
+      let compare = rawNumber(b[primary]) - rawNumber(a[primary]);
       compare = reverse ? -compare : compare;
 
       if (compare === 0 && secondery) {
-        compare = b[secondery] - a[secondery];
+        compare = rawNumber(b[secondery]) - rawNumber(a[secondery]);
         compare = secondReverse ? -compare : compare;
       }
       return compare;
