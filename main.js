@@ -69,6 +69,75 @@
         }
 
         increaseCharacterCount(playerInScoreList, player.character, isWin);
+
+        const {
+          name,
+          score,
+          count,
+          wolfCount,
+          wolfWinCount,
+          goodmanCount,
+          goodmanWinCount,
+          seerCount,
+          seerWinCount,
+          witcherCount,
+          witcherWinCount,
+          hunterCount,
+          hunterWinCount,
+          guardCount,
+          guardWinCount,
+          cupidCount,
+          cupidWinCount,
+          idiotCount,
+          idiotWinCount,
+          villagerCount,
+          villagerWinCount,
+        } = playerInScoreList;
+
+        const rate = score / count;
+        const wolfRate = wolfCount ? wolfWinCount / wolfCount : -1;
+        const goodmanRate = goodmanCount ? goodmanWinCount / goodmanCount : -1;
+
+        const pickWolfRate = wolfCount / count;
+
+        const villagerRate = villagerCount
+          ? rawNumber(villagerWinCount) / rawNumber(villagerCount)
+          : -1;
+        const seerRate = seerCount
+          ? rawNumber(seerWinCount) / rawNumber(seerCount)
+          : -1;
+
+        const witcherRate = witcherCount
+          ? rawNumber(witcherWinCount) / rawNumber(witcherCount)
+          : -1;
+
+        const hunterRate = hunterCount
+          ? rawNumber(hunterWinCount) / rawNumber(hunterCount)
+          : -1;
+
+        const guardRate = guardCount
+          ? rawNumber(guardWinCount) / rawNumber(guardCount)
+          : -1;
+
+        const idiotRate = idiotCount
+          ? rawNumber(idiotWinCount) / rawNumber(idiotCount)
+          : -1;
+
+        playerInScoreList = {
+          ...playerInScoreList,
+          rate,
+          wolfRate,
+          goodmanRate,
+          pickWolfRate,
+          villagerRate,
+          seerRate,
+          witcherRate,
+          hunterRate,
+          guardRate,
+          idiotRate,
+        };
+
+        replacePlayerInData(playerInScoreList);
       });
     });
   }
@@ -110,6 +179,13 @@
 
   function getPlayerInData(playerName) {
     return scoreList.find(player => player.name == playerName);
+  }
+
+  function replacePlayerInData(playerInScoreList) {
+    scoreList = scoreList.filter(
+      player => player.name !== playerInScoreList.name
+    );
+    scoreList.push(playerInScoreList);
   }
 
   function getCharacterIndex(character) {
@@ -164,98 +240,108 @@
           idiotWinCount,
           villagerCount,
           villagerWinCount,
+          rate,
+          wolfRate,
+          goodmanRate,
+          pickWolfRate,
+          villagerRate,
+          seerRate,
+          witcherRate,
+          hunterRate,
+          guardRate,
+          idiotRate,
         } = playerInScoreList;
-        const rate = (score / count * 100).toFixed(2);
-        const wolfRate = wolfCount
-          ? `${(wolfWinCount / wolfCount * 100).toFixed(2)}%`
-          : 0;
-        const goodmanRate = goodmanCount
-          ? `${(goodmanWinCount / goodmanCount * 100).toFixed(2)}%`
-          : 0;
+        // const rate = (score / count * 100).toFixed(2);
+        // const wolfRate = wolfCount
+        //   ? `${(wolfWinCount / wolfCount * 100).toFixed(2)}%`
+        //   : 0;
+        // const goodmanRate = goodmanCount
+        //   ? `${(goodmanWinCount / goodmanCount * 100).toFixed(2)}%`
+        //   : 0;
 
-        const pickWolfRate = `${(wolfCount / count * 100).toFixed(2)}%`;
+        // const pickWolfRate = `${(wolfCount / count * 100).toFixed(2)}%`;
 
-        const villagerRate = villagerCount
-          ? `${(
-              rawNumber(villagerWinCount) /
-              rawNumber(villagerCount) *
-              100
-            ).toFixed(2)}%`
-          : 0;
-        const seerRate = seerCount
-          ? `${(rawNumber(seerWinCount) / rawNumber(seerCount) * 100).toFixed(
-              2
-            )}%`
-          : 0;
+        // const villagerRate = villagerCount
+        //   ? `${(
+        //       rawNumber(villagerWinCount) /
+        //       rawNumber(villagerCount) *
+        //       100
+        //     ).toFixed(2)}%`
+        //   : 0;
+        // const seerRate = seerCount
+        //   ? `${(rawNumber(seerWinCount) / rawNumber(seerCount) * 100).toFixed(
+        //       2
+        //     )}%`
+        //   : 0;
 
-        const witcherRate = witcherCount
-          ? `${(
-              rawNumber(witcherWinCount) /
-              rawNumber(witcherCount) *
-              100
-            ).toFixed(2)}%`
-          : 0;
+        // const witcherRate = witcherCount
+        //   ? `${(
+        //       rawNumber(witcherWinCount) /
+        //       rawNumber(witcherCount) *
+        //       100
+        //     ).toFixed(2)}%`
+        //   : 0;
 
-        const hunterRate = hunterCount
-          ? `${(
-              rawNumber(hunterWinCount) /
-              rawNumber(hunterCount) *
-              100
-            ).toFixed(2)}%`
-          : 0;
+        // const hunterRate = hunterCount
+        //   ? `${(
+        //       rawNumber(hunterWinCount) /
+        //       rawNumber(hunterCount) *
+        //       100
+        //     ).toFixed(2)}%`
+        //   : 0;
 
-        const guardRate = guardCount
-          ? `${(rawNumber(guardWinCount) / rawNumber(guardCount) * 100).toFixed(
-              2
-            )}%`
-          : 0;
+        // const guardRate = guardCount
+        //   ? `${(rawNumber(guardWinCount) / rawNumber(guardCount) * 100).toFixed(
+        //       2
+        //     )}%`
+        //   : 0;
 
-        const idiotRate = idiotCount
-          ? `${(rawNumber(idiotWinCount) / rawNumber(idiotCount) * 100).toFixed(
-              2
-            )}%`
-          : 0;
+        // const idiotRate = idiotCount
+        //   ? `${(rawNumber(idiotWinCount) / rawNumber(idiotCount) * 100).toFixed(
+        //       2
+        //     )}%`
+        //   : 0;
 
         return `<li class='person'><span class='person__rank'>${idx +
           1}</span><span class='person__name'>${name}</span>
             <span class='person__score'>${score}</span>
             <span class='person__result'>${count}</span>
-            <span class='person__result'>${rate}%</span>
+            <span class='person__result'>${percentString(rate)}</span>
             <span class='person__result'>${wolfWinCount}/${wolfCount}</span>
             <span class='person__result'>
-            ${wolfRate}
+            ${percentString(wolfRate)}
             </span>
-            <span class='person__result'>${pickWolfRate}</span>
+            <span class='person__result'>${percentString(pickWolfRate)}</span>
 
             <span class='person__result'>${rawNumber(
               goodmanWinCount
             )}/${rawNumber(goodmanCount)}</span>
-            <span class='person__result'>${goodmanRate}</span>
+            <span class='person__result'>${percentString(goodmanRate)}</span>
             <span class='person__result'>${rawNumber(
               villagerWinCount
             )}/${rawNumber(villagerCount)}</span>
-            <span class='person__result'>${villagerRate}</span>
+            <span class='person__result'>${percentString(villagerRate)}</span>
 
             <span class='person__result large'>${rawNumber(
               seerWinCount
             )}/${rawNumber(seerCount)}</span>
-            <span class='person__result large'>${seerRate}</span>
+            <span class='person__result large'>${percentString(seerRate)}</span>
             <span class='person__result'>${rawNumber(
               witcherWinCount
             )}/${rawNumber(witcherCount)}</span>
-            <span class='person__result'>${witcherRate}</span>
+            <span class='person__result'>${percentString(witcherRate)}</span>
             <span class='person__result'>${rawNumber(
               hunterWinCount
             )}/${rawNumber(hunterCount)}</span>
-            <span class='person__result'>${hunterRate}</span>
+            <span class='person__result'>${percentString(hunterRate)}</span>
             <span class='person__result'>${rawNumber(
               guardWinCount
             )}/${rawNumber(guardCount)}</span>
-            <span class='person__result'>${guardRate}</span>
+            <span class='person__result'>${percentString(guardRate)}</span>
             <span class='person__result'>${rawNumber(
               idiotWinCount
             )}/${rawNumber(idiotCount)}</span>
-            <span class='person__result'>${idiotRate}</span>
+            <span class='person__result'>${percentString(idiotRate)}</span>
             </li>`;
       })
       .join('');
@@ -263,6 +349,10 @@
 
   function rawNumber(number) {
     return number ? number : 0;
+  }
+
+  function percentString(rate) {
+    return rate < 0 ? '0' : `${(rate * 100).toFixed(2)}%`;
   }
 
   function buildScoreNames() {
