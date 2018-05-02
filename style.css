@@ -80,6 +80,10 @@ li {
   font-weight: bold;
 }
 
+.person--header span {
+  cursor: pointer;
+}
+
 .person__rank {
   width: 15%;
   text-align: center;
