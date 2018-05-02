@@ -9,14 +9,41 @@
   };
 
   let count = 0;
-  dupFixHeader();
-  buildScoreList();
-  $('.score-board').after(buildScoreBoard());
-  $('.board-container').append(buildScoreNames());
+  let $emptyBoardContainer = $('.board-container').clone();
+
+  refreshBoard();
+
   buildGameResultDetailsBoard();
   buidlLastUpdateTime();
   handleDetailsToggleEvent();
-  handleScrollEvent();
+
+  function refreshBoard() {
+    $('.board-container').html($emptyBoardContainer.html());
+    scoreList = [];
+    dupFixHeader();
+    buildScoreList();
+    $('.score-board').after(buildScoreBoard());
+    $('.board-container').append(buildScoreNames());
+    handleScrollEvent();
+    handleSortEvent();
+  }
+
+  function handleSortEvent() {
+    $('.person--header span').click(function() {
+      const $this = $(this);
+      const primary = $this.data('rank');
+      if (primary) {
+        sortParamers = {
+          primary,
+          secondery: $this.data('rankSecond'),
+          reverse: $this.data('reverse'),
+          secondReverse: $this.data('secondReverse'),
+        };
+
+        refreshBoard();
+      }
+    });
+  }
 
   function buildGameResultDetailsBoard() {
     const detailsBoard = gameData
