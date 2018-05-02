@@ -6,6 +6,8 @@
     secondery: 'count',
     reverse: false,
     secondReverse: false,
+    key: '',
+    reverseSort: false,
   };
 
   let count = 0;
@@ -33,11 +35,15 @@
       const $this = $(this);
       const primary = $this.data('rank');
       if (primary) {
+        const reverse =
+          $this.text() === sortParamers.key ? !sortParamers.reverseSort : false;
         sortParamers = {
           primary,
           secondery: $this.data('rankSecond'),
-          reverse: $this.data('reverse'),
-          secondReverse: $this.data('secondReverse'),
+          reverse: reverse ^ $this.data('reverse'),
+          secondReverse: reverse ^ $this.data('secondReverse'),
+          key: $this.text(),
+          reverseSort: reverse,
         };
 
         refreshBoard();
@@ -174,6 +180,17 @@
         replacePlayerInData(playerInScoreList);
       });
     });
+
+    scoreList = scoreList
+      .filter(a => a.score > 0)
+      .sort((a, b) => {
+        let compare = b.score - a.score;
+        if (compare === 0) {
+          compare = b.count - a.count;
+        }
+        return compare;
+      })
+      .map((score, index) => ({ ...score, rank: index + 1 }));
   }
 
   function increaseCharacterCount(playerInScoreList, character, isWin) {
@@ -265,6 +282,7 @@
     return sortScoreList()
       .map((playerInScoreList, idx) => {
         const {
+          rank,
           name,
           score,
           count,
@@ -298,8 +316,7 @@
           idiotRate,
         } = playerInScoreList;
 
-        return `<li class='person'><span class='person__rank'>${idx +
-          1}</span><span class='person__name'>${name}</span>
+        return `<li class='person'><span class='person__rank'>${rank}</span><span class='person__name'>${name}</span>
             <span class='person__score'>${score}</span>
             <span class='person__result'>${count}</span>
             <span class='person__result'>${percentString(rate)}</span>
