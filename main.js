@@ -19,12 +19,12 @@
       .text(message);
   }
 
-  addInfo('a', 1);
+  addInfo('a', 0);
   refreshBoard();
   addInfo('b', 2);
 
   buildGameResultDetailsBoard();
-  addInfo('c', 3);
+  addInfo('c', 6);
 
   buidlLastUpdateTime();
   addInfo('d', 4);
@@ -34,15 +34,15 @@
 
   function refreshBoard() {
     const tableScrollLeft = $('.person-ul').scrollLeft();
-    addInfo('a1', 1);
+    addInfo('a1', 0);
 
     $('.board-container').html($emptyBoardContainer.html());
 
-    addInfo('a2', 1);
+    addInfo('a2', 0);
 
     scoreList = [];
 
-    addInfo('a3', 1);
+    addInfo('a3', 0);
 
     dupFixHeader();
 
