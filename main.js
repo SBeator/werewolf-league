@@ -13,25 +13,63 @@
   let count = 0;
   let $emptyBoardContainer = $('.board-container').clone();
 
+  function addInfo(message, index) {
+    $('.person__rank')
+      .eq(index)
+      .text(message);
+  }
+
+  addInfo('a', 1);
   refreshBoard();
+  addInfo('b', 2);
 
   buildGameResultDetailsBoard();
+  addInfo('c', 3);
+
   buidlLastUpdateTime();
+  addInfo('d', 4);
+
   handleDetailsToggleEvent();
+  addInfo('e', 5);
 
   function refreshBoard() {
     const tableScrollLeft = $('.person-ul').scrollLeft();
+    addInfo('a1', 1);
 
     $('.board-container').html($emptyBoardContainer.html());
+
+    addInfo('a2', 1);
+
     scoreList = [];
+
+    addInfo('a3', 1);
+
     dupFixHeader();
+
+    addInfo('a4', 1);
+
     buildScoreList();
+
+    addInfo('a5', 1);
+
     $('.score-board').after(buildScoreBoard());
+
+    addInfo('a6', 1);
+
     $('.board-container').append(buildScoreNames());
+
+    addInfo('a7', 1);
+
     handleScrollEvent();
+
+    addInfo('a8', 1);
+
     handleSortEvent();
+    addInfo('a9', 1);
 
     $('.person-ul').scrollLeft(tableScrollLeft);
+
+    addInfo('a10', 1);
   }
 
   function handleSortEvent() {
