@@ -1,3 +1,5 @@
+$('.league__info').after($(`<div>aaaaaaaa</div>`));
+
 (function() {
   $('.league__info').after($(`<div>1111</div>`));
 
@@ -615,4 +617,4 @@
   }
 })();
 
-$('.league__info').after($(`<div>aaaaaa</div>`));
+$('.league__info').after($(`<div>bbbbbbb</div>`));
