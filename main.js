@@ -11,65 +11,65 @@
   };
 
   let count = 0;
-  let $emptyBoardContainer = $('.board-container').clone();
 
-  function addInfo(message, index) {
-    $('.person__rank')
-      .eq(index)
-      .text(message);
+  function addInfo(message) {
+    $('.league__info').after($(`<div>${message}</div>`));
   }
 
-  addInfo('a', 0);
+  addInfo('before');
+  let $emptyBoardContainer = $($('.board-container')[0].outerHTML);
+
+  addInfo('a');
   refreshBoard();
-  addInfo('b', 2);
+  addInfo('b');
 
   buildGameResultDetailsBoard();
-  addInfo('c', 6);
+  addInfo('c');
 
   buidlLastUpdateTime();
-  addInfo('d', 4);
+  addInfo('d');
 
   handleDetailsToggleEvent();
-  addInfo('e', 5);
+  addInfo('e');
 
   function refreshBoard() {
     const tableScrollLeft = $('.person-ul').scrollLeft();
-    addInfo('a1', 0);
+    addInfo('a1');
 
     $('.board-container').html($emptyBoardContainer.html());
 
-    addInfo('a2', 0);
+    addInfo('a2');
 
     scoreList = [];
 
-    addInfo('a3', 0);
+    addInfo('a3');
 
     dupFixHeader();
 
-    addInfo('a4', 1);
+    addInfo('a4');
 
     buildScoreList();
 
-    addInfo('a5', 1);
+    addInfo('a5');
 
     $('.score-board').after(buildScoreBoard());
 
-    addInfo('a6', 1);
+    addInfo('a6');
 
     $('.board-container').append(buildScoreNames());
 
-    addInfo('a7', 1);
+    addInfo('a7');
 
     handleScrollEvent();
 
-    addInfo('a8', 1);
+    addInfo('a8');
 
     handleSortEvent();
-    addInfo('a9', 1);
+    addInfo('a9');
 
     $('.person-ul').scrollLeft(tableScrollLeft);
 
-    addInfo('a10', 1);
+    addInfo('a10');
   }
 
   function handleSortEvent() {
