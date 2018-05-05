@@ -58,7 +58,7 @@ const roleSides = {
 
 const gameData = [
   {
-    date: '20 April 2018',
+    date: '4 May 2018',
     round: '2',
     winSide: 'wolves',
     players: [
