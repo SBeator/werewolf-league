@@ -24,7 +24,7 @@ const players = {
   yangyaping: '杨亚萍',
   yangqi: '杨琪',
   liaoandong: '廖安东',
-  xxx: 'XXX',
+  ningwenchao: '宁文潮',
 };
 
 const wolves = {
@@ -75,7 +75,7 @@ const gameData = [
         character: goodmen.witcher,
       },
       {
-        name: players.xxx,
+        name: players.ningwenchao,
         character: goodmen.guard,
       },
       {
