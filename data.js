@@ -56,13 +56,11 @@ const roleSides = {
   goodmen,
 };
 
-const gameData = [
-  {
-    date: '20 April 2018',
-    round: '2',
+const gameData = [{
+    date: '5 May 2018',
+    round: '1',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.wangpei,
         character: goodmen.seer,
       },
@@ -109,11 +107,10 @@ const gameData = [
     ],
   },
   {
-    date: '20 April 2018',
-    round: '2',
+    date: '27 April 2018',
+    round: '1',
     winSide: 'goodmen',
-    players: [
-      {
+    players: [{
         name: players.yaohongchang,
         character: goodmen.seer,
       },
@@ -163,8 +160,7 @@ const gameData = [
     date: '20 April 2018',
     round: '2',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.linchen,
         character: goodmen.seer,
       },
@@ -206,8 +202,7 @@ const gameData = [
     date: '20 April 2018',
     round: '1',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.duweike,
         character: goodmen.seer,
       },
@@ -249,8 +244,7 @@ const gameData = [
     date: '13 April 2018',
     round: '1',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.zenglei,
         character: goodmen.seer,
       },
@@ -301,8 +295,7 @@ const gameData = [
     date: '04 April 2018',
     round: '1',
     winSide: 'goodmen',
-    players: [
-      {
+    players: [{
         name: players.zenglei,
         character: goodmen.seer,
       },
@@ -348,8 +341,7 @@ const gameData = [
     date: '30 March 2018',
     round: '1',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.liuruoran,
         character: goodmen.seer,
       },
@@ -391,8 +383,7 @@ const gameData = [
     date: '30 March 2018',
     round: '2',
     winSide: 'goodmen',
-    players: [
-      {
+    players: [{
         name: players.zengxingxin,
         character: goodmen.seer,
       },
@@ -434,8 +425,7 @@ const gameData = [
     date: '30 March 2018',
     round: '3',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.zengxingxin,
         character: goodmen.seer,
       },
@@ -477,8 +467,7 @@ const gameData = [
     date: '2 March 2018',
     round: '1',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.liaoguolong,
         character: goodmen.seer,
       },
@@ -524,8 +513,7 @@ const gameData = [
     date: '2 March 2018',
     round: '2',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.duweike,
         character: goodmen.seer,
       },
@@ -567,8 +555,7 @@ const gameData = [
     date: '24 Feb 2018',
     round: '1',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.zhipu,
         character: goodmen.seer,
       },
@@ -610,8 +597,7 @@ const gameData = [
     date: '24 Feb 2018',
     round: '2',
     winSide: 'goodmen',
-    players: [
-      {
+    players: [{
         name: players.sundi,
         character: goodmen.seer,
       },
@@ -653,8 +639,7 @@ const gameData = [
     date: '23 Feb 2018',
     round: '1',
     winSide: 'thirdSide',
-    players: [
-      {
+    players: [{
         name: players.wangpei,
         character: goodmen.seer,
       },
@@ -698,8 +683,7 @@ const gameData = [
     date: '11 Feb 2018',
     round: '1',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.linning,
         character: goodmen.seer,
       },
@@ -753,8 +737,7 @@ const gameData = [
     date: '11 Feb 2018',
     round: '2',
     winSide: 'goodmen',
-    players: [
-      {
+    players: [{
         name: players.duweike,
         character: goodmen.seer,
       },
@@ -792,8 +775,7 @@ const gameData = [
     date: '11 Feb 2018',
     round: '3',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.zhipu,
         character: goodmen.seer,
       },
@@ -831,8 +813,7 @@ const gameData = [
     date: '9 Feb 2018',
     round: '1',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.xiaozihang,
         character: wolves.normal,
       },
@@ -886,8 +867,7 @@ const gameData = [
     date: '9 Feb 2018',
     round: '2',
     winSide: 'goodmen',
-    players: [
-      {
+    players: [{
         name: players.zengxingxin,
         character: goodmen.seer,
       },
@@ -925,8 +905,7 @@ const gameData = [
     date: '2 Feb 2018',
     round: '1',
     winSide: 'wolves',
-    players: [
-      {
+    players: [{
         name: players.yangyi,
         character: wolves.normal,
       },
@@ -986,8 +965,7 @@ const gameData = [
     date: '2 Feb 2018',
     round: '2',
     winSide: 'goodmen',
-    players: [
-      {
+    players: [{
         name: players.zengxingxin,
         character: goodmen.seer,
       },
